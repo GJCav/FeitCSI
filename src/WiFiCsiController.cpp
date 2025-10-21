@@ -109,7 +109,6 @@ int WiFiCsiController::processListenToCsiHandler(struct nl_msg *msg, void *arg)
                 
                 )
                 {
-                    printf("masm csi\n");
                     if (!Arguments::arguments.strict || (Arguments::arguments.strict && (c->rawHeaderData.rateNflag & RATE_LEGACY_RATE_MSK) == Arguments::arguments.mcs))
                     {
                         if (Arguments::arguments.verbose) {

@@ -150,9 +150,9 @@ int WiFiFtmController::ftmHandler(struct nl80211_state *state, struct nl_msg *ms
     case 160:
         NLA_PUT_U32(msg, NL80211_ATTR_CHANNEL_WIDTH, NL80211_CHAN_WIDTH_160);
         break;
-    case 320:
-        NLA_PUT_U32(msg, NL80211_ATTR_CHANNEL_WIDTH, NL80211_CHAN_WIDTH_320);
-        break;
+    // case 320:  // workaround as the symbol was not declared in this scope
+    //     NLA_PUT_U32(msg, NL80211_ATTR_CHANNEL_WIDTH, NL80211_CHAN_WIDTH_320);
+    //     break;
     }
 
     nla_nest_end(msg, chan);
@@ -195,9 +195,9 @@ int WiFiFtmController::ftmResponderHandler(struct nl80211_state *state, struct n
     case 160:
         NLA_PUT_U32(msg, NL80211_ATTR_CHANNEL_WIDTH, NL80211_CHAN_WIDTH_160);
         break;
-    case 320:
-        NLA_PUT_U32(msg, NL80211_ATTR_CHANNEL_WIDTH, NL80211_CHAN_WIDTH_320);
-        break;
+    // case 320:  // workaround as the symbol was not declared in this scope
+    //     NLA_PUT_U32(msg, NL80211_ATTR_CHANNEL_WIDTH, NL80211_CHAN_WIDTH_320);
+    //     break;
     }
 
     NLA_PUT_FLAG(msg, NL80211_ATTR_SOCKET_OWNER);

@@ -315,8 +315,8 @@ uint16_t WiFIController::chanModeToWidth(struct ChanMode &chanMode)
         return 80;
     case NL80211_CHAN_WIDTH_160:
         return 160;
-    case NL80211_CHAN_WIDTH_320:
-        return 320;
+    // case NL80211_CHAN_WIDTH_320: // workaround as the symbol was not declared in this scope
+    //     return 320;
 
     default:
         break;
@@ -359,10 +359,10 @@ ChanMode WiFIController::getChanMode(const char *width)
          .width = NL80211_CHAN_WIDTH_160,
          .freq1_diff = 0,
          .chantype = -1},
-        {.name = "320MHz",
-         .width = NL80211_CHAN_WIDTH_320,
-         .freq1_diff = 0,
-         .chantype = -1},
+        // {.name = "320MHz",                    // workaround as the symbol was not declared in this scope
+        //  .width = NL80211_CHAN_WIDTH_320,
+        //  .freq1_diff = 0,
+        //  .chantype = -1},
         {.name = "1MHz",
          .width = NL80211_CHAN_WIDTH_1,
          .freq1_diff = 0,
@@ -540,19 +540,19 @@ int WiFIController::getCf1(const struct ChanMode *chanmode, unsigned long freq)
 
         cf1 = bw160[j] + 70;
         break;
-    case NL80211_CHAN_WIDTH_320:
-        /* setup center_freq1 */
-        for (j = 0; j < ARRAY_SIZE(bw320); j++)
-        {
-            if (freq >= bw320[j] && freq < bw320[j] + 160)
-                break;
-        }
+    // case NL80211_CHAN_WIDTH_320: // workaround as the symbol was not declared in this scope
+    //     /* setup center_freq1 */
+    //     for (j = 0; j < ARRAY_SIZE(bw320); j++)
+    //     {
+    //         if (freq >= bw320[j] && freq < bw320[j] + 160)
+    //             break;
+    //     }
 
-        if (j == ARRAY_SIZE(bw320))
-            break;
+    //     if (j == ARRAY_SIZE(bw320))
+    //         break;
 
-        cf1 = bw320[j] + 150;
-        break;
+    //     cf1 = bw320[j] + 150;
+    //     break;
     default:
         cf1 = freq + chanmode->freq1_diff;
         break;
