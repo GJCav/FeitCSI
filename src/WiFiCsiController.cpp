@@ -189,16 +189,13 @@ void WiFiCsiController::printDetail(Csi *c)
 
 void WiFiCsiController::enableCsi(bool enable)
 {
-    if (Arguments::arguments.verbose)
+    if (enable)
     {
-        if (enable)
-        {
-            Logger::log(info) << "Enabling CSI measurement\n";
-        } 
-        else
-        {
-            Logger::log(info) << "Disabling CSI measurement\n";
-        }
+        Logger::log(info) << "Enabling CSI measurement\n";
+    } 
+    else
+    {
+        Logger::log(info) << "Disabling CSI measurement\n";
     }
 
     const char *baseDir = "/sys/kernel/debug/iwlwifi";

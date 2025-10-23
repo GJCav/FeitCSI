@@ -491,6 +491,7 @@ void *MainController::injectPackets(void *arg)
         MainController::getInstance()->wifiController.setInterfaceUpDown(AP_INTERFACE_NAME, false);
         MainController::getInstance()->wifiController.setInterfaceUpDown(MONITOR_INTERFACE_NAME, true);
         PacketInjector pi;
+        Logger::log(info) << "Start injecting...\n";
         if (Arguments::arguments.injectRepeat)
         {
             for (uint32_t i = 0; i < Arguments::arguments.injectRepeat; i++)

@@ -5,3 +5,7 @@ This fork addresses several bugs of the original code. These incuding:
 - The compilation error of `'NL80211_CHAN_WIDTH_320' was not declared in this scope`. As a workaround, the support for 320 MHz bandwidth is removed.
 - The `timestamp` field of CSI from `measure` mode is always zero. To solve the problem, the function `WiFiCsiController::processListenToCsiHandler` from `src/WiFiCsiController.cpp` is patched.
 
+Some patches are also introduced to improve the observability:
+- The message "Start injecting..." is printed to indicate the injection start.
+- On `measure` mode, "Enabling CSI measurement" and "Disabling CSI measurement" are printed.
+
