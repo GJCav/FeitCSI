@@ -91,6 +91,7 @@ int WiFiCsiController::processListenToCsiHandler(struct nl_msg *msg, void *arg)
 
             Csi *c = new Csi();
             c->loadFromMemory(header, dataCsi);
+            c->rawHeaderData.timestamp = (uint64_t)std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 
             if (
                 (c->channelWidth == RATE_MCS_CHAN_WIDTH_20 && Arguments::arguments.channelWidth == 20) ||
